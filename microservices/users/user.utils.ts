@@ -26,9 +26,9 @@ export async function findOne(email: string): Promise<IUser | null | string> {
     }
 }
 
-export async function findMultiple(email: string): Promise<IUser[] | null | string> {
+export async function findMultiple(firstName: string): Promise<IUser[] | null | string> {
     try {
-        return UserSchema.find({ email });
+        return UserSchema.find({ firstName });
     } catch (error) {
         console.error(error);
         return 'Error finding user';

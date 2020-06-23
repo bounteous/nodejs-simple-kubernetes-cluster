@@ -26,3 +26,7 @@ curl -i -X POST -H "Content-Type: application/json" -d "{\"email\":\"alex@gmail.
 ```
 curl -X GET -H "Content-Type: application/json" http://localhost:2424/user\?email\=alex@gmail.com
 ```
+
+```
+curl -X GET -H "Content-Type: application/json" http://localhost:2424/users\?firstName\=alex
+```

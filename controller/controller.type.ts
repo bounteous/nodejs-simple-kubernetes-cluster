@@ -13,7 +13,7 @@ export interface Controller {
         },
         get: {
             one: (email: string) => Promise<IUser | null | string>,
-            multiple: (email: string) => Promise<IUser[] | null | string>
+            multiple: (firstName: string) => Promise<IUser[] | null | string>
         }
     }
 };

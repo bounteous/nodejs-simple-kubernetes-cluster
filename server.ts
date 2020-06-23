@@ -47,8 +47,8 @@ router.get('/user', async (ctx: Koa.Context, next: () => Promise<any>) => {
 });
 
 router.get('/users', async (ctx: Koa.Context, next: () => Promise<any>) => {
-    const email: string = ctx.query.email;
-    ctx.body = await controller.user.get.multiple(email);
+    const firstName: string = ctx.query.firstName;
+    ctx.body = await controller.user.get.multiple(firstName);
 
     await next();
 });
