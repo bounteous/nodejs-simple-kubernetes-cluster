@@ -8,7 +8,7 @@ import * as KoaBodyParser from 'koa-bodyparser';
 
 // Modules
 import { instanceDb } from './microservices/db/db.module';
-import { controller } from './controller';
+import { controller } from './controller/controller';
 
 // Instances
 instanceDb();
