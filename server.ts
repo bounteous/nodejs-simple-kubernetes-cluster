@@ -46,4 +46,11 @@ router.get('/user', async (ctx: Koa.Context, next: () => Promise<any>) => {
     await next();
 });
 
+router.get('/users', async (ctx: Koa.Context, next: () => Promise<any>) => {
+    const email: string = ctx.query.email;
+    ctx.body = await controller.user.get.multiple(email);
+
+    await next();
+});
+
 app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
