@@ -8,7 +8,7 @@ import * as KoaBodyParser from 'koa-bodyparser';
 
 // Modules
 import { instanceDb } from './microservices/db/db.module';
-import { create as createUser, findOne as findOneUser } from './microservices/users/user.utils';
+import { controller } from './controller';
 
 // Instances
 instanceDb();
@@ -27,19 +27,22 @@ app.use(KoaBodyParser());
 app.use(router.routes()).use(router.allowedMethods());
 
 router.get('/', async (ctx: Koa.Context, next: () => Promise<any>) => {
-    ctx.body = { message: 'Server up and running ...' };
+    ctx.body = controller.server.get.info()
+
     await next();
 });
 
 router.post('/user', async (ctx: Koa.Context, next: () => Promise<any>) => {
     const { email, firstName, secondName } = ctx.request.body;
-    ctx.body = await createUser({ email, firstName, secondName });
+    ctx.body = await controller.user.post.one({ email, firstName, secondName });
+
     await next();
 });
 
 router.get('/user', async (ctx: Koa.Context, next: () => Promise<any>) => {
     const email: string = ctx.query.email;
-    ctx.body = await findOneUser(email);
+    ctx.body = await controller.user.get.one(email);
+
     await next();
 });
 
